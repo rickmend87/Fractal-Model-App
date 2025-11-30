@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onHistoryClick: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onHistoryClick }) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -14,7 +18,12 @@ export const Header: React.FC = () => {
         <nav className="flex items-center gap-8">
           <a href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">MODEL</a>
           <a href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">RESOURCES</a>
-          <a href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">HISTORY</a>
+          <button 
+            onClick={onHistoryClick}
+            className="text-sm font-medium text-zinc-400 hover:text-white transition-colors uppercase"
+          >
+            History
+          </button>
         </nav>
       </div>
     </header>

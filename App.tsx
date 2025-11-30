@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { AnalysisDisplay } from './components/AnalysisDisplay';
+import { HistoryDrawer } from './components/HistoryDrawer';
 import { analyzeChartWithGemini } from './services/geminiService';
-import { AnalysisResult, AppState } from './types';
+import { AnalysisResult, AppState, HistoryItem } from './types';
 
 function App() {
   const [appState, setAppState] = useState<AppState>(AppState.IDLE);
   const [result, setResult] = useState<AnalysisResult | null>(null);
+  const [currentImage, setCurrentImage] = useState<string | null>(null); // Base64
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  
+  // History State
+  const [history, setHistory] = useState<HistoryItem[]>([]);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const handleImageSelected = async (file: File) => {
     setAppState(AppState.ANALYZING);
     setErrorMsg(null);
     setResult(null);
+    setCurrentImage(null);
 
     try {
       // Convert file to base64
@@ -24,9 +31,22 @@ function App() {
         const base64Data = base64String.split(',')[1];
         
         try {
+          setCurrentImage(base64Data);
           const analysis = await analyzeChartWithGemini(base64Data);
+          
           setResult(analysis);
           setAppState(AppState.SUCCESS);
+
+          // Add to History
+          const newItem: HistoryItem = {
+            id: crypto.randomUUID(),
+            timestamp: Date.now(),
+            imageData: base64Data,
+            result: analysis
+          };
+          
+          setHistory(prev => [newItem, ...prev]);
+
         } catch (apiError) {
           console.error(apiError);
           setAppState(AppState.ERROR);
@@ -48,22 +68,41 @@ function App() {
   const handleReset = () => {
     setAppState(AppState.IDLE);
     setResult(null);
+    setCurrentImage(null);
     setErrorMsg(null);
+  };
+
+  const handleSelectHistoryItem = (item: HistoryItem) => {
+    setResult(item.result);
+    setCurrentImage(item.imageData);
+    setAppState(AppState.SUCCESS);
+    setIsHistoryOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-orange-500 selection:text-white overflow-x-hidden">
-      <Header />
+      <Header onHistoryClick={() => setIsHistoryOpen(true)} />
+      
+      <HistoryDrawer 
+        isOpen={isHistoryOpen} 
+        onClose={() => setIsHistoryOpen(false)} 
+        history={history}
+        onSelect={handleSelectHistoryItem}
+      />
       
       <main className="relative">
         {/* Dynamic Content Switching */}
         {appState === AppState.SUCCESS && result ? (
            <div className="pt-32 pb-20 px-6 min-h-screen flex flex-col items-center">
-             <div className="mb-12 text-center">
+             <div className="mb-8 text-center animate-fade-in-up">
                <h2 className="text-4xl font-bold mb-4">Analysis Complete</h2>
                <p className="text-zinc-400">Here is the breakdown based on the Universal Model.</p>
              </div>
-             <AnalysisDisplay result={result} onReset={handleReset} />
+             <AnalysisDisplay 
+               result={result} 
+               imageData={currentImage || undefined}
+               onReset={handleReset} 
+             />
            </div>
         ) : (
           <HeroSection onImageSelected={handleImageSelected} appState={appState} />

@@ -8,6 +8,13 @@ export interface AnalysisResult {
   reasoning: string;
 }
 
+export interface HistoryItem {
+  id: string;
+  timestamp: number;
+  imageData: string; // Base64 string
+  result: AnalysisResult;
+}
+
 export enum AppState {
   IDLE = 'IDLE',
   ANALYZING = 'ANALYZING',
