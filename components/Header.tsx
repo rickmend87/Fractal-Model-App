@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from './Button';
 
 export const Header: React.FC = () => {
   return (
@@ -12,18 +11,11 @@ export const Header: React.FC = () => {
           <span className="font-bold text-xl tracking-tight text-white">Fractal Model Trader</span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="flex items-center gap-8">
           <a href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">MODEL</a>
           <a href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">RESOURCES</a>
           <a href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">HISTORY</a>
         </nav>
-
-        <div className="flex items-center gap-4">
-          <a href="#" className="text-sm font-medium text-zinc-300 hover:text-white hidden sm:block">Log In</a>
-          <Button variant="primary" className="py-2 px-5 text-sm">
-            Get Access
-          </Button>
-        </div>
       </div>
     </header>
   );
