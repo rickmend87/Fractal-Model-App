@@ -3,6 +3,9 @@
 AI-powered trading chart analysis using the **TTrades Universal Model**. Built with React 19, Tailwind CSS, and the latest Google Gemini 3 Pro AI.
 
 ## App Interface
+
+<img width="1693" height="1142" alt="Image" src="https://github.com/user-attachments/assets/59606550-6a73-482c-a51a-d8845456ca2c" />
+
 <img src="images/screenshot.png">
 
 ## Overview
