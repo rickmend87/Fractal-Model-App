@@ -1,20 +1,33 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Fractal Model Trader
 
-# Run and deploy your AI Studio app
+AI-powered trading chart analysis using the **TTrades Universal Model**. Built with React 19, Tailwind CSS, and the latest Google Gemini 3 Pro AI.
 
-This contains everything you need to run your app locally.
+## App Interface
+![Fractal Model Trader Home](./screenshot.png)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1dzcYdZ1306lBTFdboc56Wnx0RkQrXyLM
+## Overview
+Fractal Model Trader is a specialized tool designed for traders following the TTrades methodology. It automates the visual identification of market structures, SMT divergences, and precision swing points using advanced multimodal AI logic.
 
-## Run Locally
+## Key Features
+- **Visual Analysis**: Upload chart screenshots (NQ/ES triads) for instant AI decoding.
+- **Universal Model Logic**: Analyzes shifts between Internal and External liquidity.
+- **SMT Detection**: Identifies cracks in correlation between indices (Standard and Two-Stage SMT).
+- **Precision Swing Points**: Detects PSP signals where assets close in opposite directions.
+- **Confidence Scoring**: Provides a 0-100 score based on strict technical criteria.
+- **Analysis History**: Store and review your past trades locally within the session.
+- **No Login Required**: Open and free access for the trading community.
 
-**Prerequisites:**  Node.js
+## Tech Stack
+- **Frontend**: React 19 (ES6 Modules)
+- **Styling**: Tailwind CSS
+- **AI Engine**: Google Gemini 3 Pro (Multimodal)
+- **Logic**: TTrades Universal Model Framework
 
+## How to Use
+1. Capture a screenshot of your trading chart (ideally showing the reaction at a key level).
+2. Upload the image to the tool.
+3. Review the AI-generated Confidence Score and Reasoning.
+4. Check the History tab to compare with previous setups.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+*Disclaimer: This tool is for educational and analytical purposes only. Trading involves significant risk.*

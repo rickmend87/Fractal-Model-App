@@ -48,22 +48,23 @@ export const analyzeChartWithGemini = async (base64Image: string): Promise<Analy
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3-pro-preview",
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
         responseMimeType: "application/json",
         responseSchema: responseSchema,
+        thinkingConfig: { thinkingBudget: 4000 } // Enable thinking for complex trade reasoning
       },
       contents: {
         parts: [
           {
             inlineData: {
-              mimeType: "image/png", // Assuming PNG, but API is flexible with standard image types
+              mimeType: "image/png",
               data: base64Image,
             },
           },
           {
-            text: "Analyze this trading chart according to the TTrades Universal Model.",
+            text: "Analyze this trading chart according to the TTrades Universal Model logic.",
           },
         ],
       },
