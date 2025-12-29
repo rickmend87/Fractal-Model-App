@@ -6,8 +6,6 @@ AI-powered trading chart analysis using the **TTrades Universal Model**. Built w
 
 <img width="1693" height="1142" alt="Image" src="https://github.com/user-attachments/assets/59606550-6a73-482c-a51a-d8845456ca2c" />
 
-<img src="images/screenshot.png">
-
 ## Overview
 Fractal Model Trader is a specialized tool designed for traders following the TTrades methodology. It automates the visual identification of market structures, SMT divergences, and precision swing points using advanced multimodal AI logic.
 
