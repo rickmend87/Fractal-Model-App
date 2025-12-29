@@ -129,7 +129,7 @@ function App() {
 
       {/* Footer */}
       <footer className="py-8 border-t border-white/5 bg-black text-center text-zinc-600 text-sm">
-        <p>© 2025 Fractal Model Trader. Powered by Gemini 2.5 Flash.</p>
+        <p>© 2025 Fractal Model Trader. Powered by Gemini 3 Pro.</p>
       </footer>
     </div>
   );

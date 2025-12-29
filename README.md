@@ -3,7 +3,7 @@
 AI-powered trading chart analysis using the **TTrades Universal Model**. Built with React 19, Tailwind CSS, and the latest Google Gemini 3 Pro AI.
 
 ## App Interface
-![Fractal Model Trader Home](./screenshot.png)
+![Fractal Model Trader Home](images/screenshot.png)
 
 ## Overview
 Fractal Model Trader is a specialized tool designed for traders following the TTrades methodology. It automates the visual identification of market structures, SMT divergences, and precision swing points using advanced multimodal AI logic.
